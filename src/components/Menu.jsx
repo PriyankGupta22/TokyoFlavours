@@ -3,6 +3,8 @@ import pic1 from "../assets/pic1.png"
 import pic2 from "../assets/pic2.png"
 import pic3 from "../assets/pic3.png"
 import pic4 from "../assets/pic4.png"
+import pic5 from "../assets/pic5.png"
+import pic6 from "../assets/pic6.png"
 
 const menuItems = [
   {
@@ -35,22 +37,24 @@ const menuItems = [
     description:
       "Fresh salmon, seasoned rice and nori finished with wasabi and soy.",
     price: "₹450",
-    imageHeight: "h-[320px]",
-    image: pic4
+    imageHeight: "h-[600px]",
+    image: pic6
   },
   {
     name: "Chicken Katsu",
     description:
       "Crispy panko chicken served with Japanese curry and steamed rice.",
     price: "₹380",
-    imageHeight: "h-[540px]",
+    imageHeight: "h-[720px]",
+    image: pic4
   },
   {
     name: "Gyoza",
     description:
       "Pan-seared dumplings filled with chicken, cabbage, ginger and garlic.",
     price: "₹280",
-    imageHeight: "h-[420px]",
+    imageHeight: "h-[620px]",
+    image: pic5
   },
 ];
 
@@ -99,7 +103,7 @@ const Menu = () => {
                 bg-[#D8D0BF]
               `}
             >
-                <img src = {item.image} />
+                <img src = {item.image} className = "w-full h-full object-cover"/>
             </div>
 
 
