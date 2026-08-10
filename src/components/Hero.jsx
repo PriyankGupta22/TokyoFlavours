@@ -63,7 +63,7 @@ const Hero = () => {
         <button className = "w-[10vw] w-max px-[20px] bg-[#1F3020] text-[15px] h-max py-[5px] text-[#F5F0E6] flex items-center justify-center gap-[20px]">VIEW MENU <CgArrowLongRight /></button>
         <button className = "w-[10vw] w-max px-[20px] text-[#1F3020] border border-[#1F3020] text-[15px] h-max py-[4px] flex items-center justify-center gap-[20px]">MAKE RESERVATION <CgArrowLongRight /></button>
     </div>
-    <div className="mt-10 w-full overflow-hidden">
+    <div className="mt-20 w-full overflow-hidden">
         <img
           src={restaurantImage}
           alt="Tokyo Flavours Japanese restaurant interior"
@@ -71,7 +71,7 @@ const Hero = () => {
         />
       </div>
       <div>
-        
+
       </div>
     </div>
   )
