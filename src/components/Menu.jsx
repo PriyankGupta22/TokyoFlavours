@@ -44,7 +44,6 @@ const menuItems = [
       "Crispy panko chicken served with Japanese curry and steamed rice.",
     price: "₹380",
     imageHeight: "h-[540px]",
-    image: pic5
   },
   {
     name: "Gyoza",
@@ -52,7 +51,6 @@ const menuItems = [
       "Pan-seared dumplings filled with chicken, cabbage, ginger and garlic.",
     price: "₹280",
     imageHeight: "h-[420px]",
-    image: pic6
   },
 ];
 
