@@ -17,7 +17,7 @@ const Hero = () => {
       <nav className="w-full px-5 sm:px-8 md:px-12 lg:px-16 py-5 font-bold mt-[10px]">
         <div className="flex items-center justify-between">
 
-    <div className="hidden md:flex items-center gap-8 lg:gap-10">
+    <div className="hidden md:flex items-center gap-8 lg:gap-10 ml-[-20px] mt-[30px]">
       <a href="/" className="font-inter text-[clamp(10px,17px,25px)">
         Home
       </a>
@@ -55,13 +55,12 @@ const Hero = () => {
 
   
 </nav>
-    <div className = "w-screen h-max mt-[50px] flex flex-row mx-10 gap-[10vw]">
-        <div className = "flex flex-wrap w-[40vw] lg:text-[27px]">FROM RICH, SLOW-SIMMERED RAMEN TO DELICATE JAPANESE FAVORITES, EVERY DISH IS CRAFTED WITH BOLD FLAVORS, FRESH INGREDIENTS, AND A TOUCH OF TOKYO.</div>
-        <div className = "flex flex-wrap w-[20vw] lg:text-[20px] items-center justify-center">bold japanese flavors, fresh ingredients, and a modern touch come together in every carefully crafted dish.</div>
+    <div className = "w-screen h-max mt-[50px] flex flex-row px-10 justify-between">
+        <div className = "text-[10px] flex flex-wrap w-[70vw] lg:text-[24px]">FROM RICH, SLOW-SIMMERED RAMEN TO DELICATE JAPANESE FAVORITES, EVERY DISH IS CRAFTED WITH BOLD FLAVORS, FRESH INGREDIENTS, AND A TOUCH OF TOKYO.</div>
     </div>
-    <div className='flex flex-row items-center mt-[20px] mx-10 gap-[30px]'>
-        <button className = "w-[10vw] w-max px-[20px] bg-[#1F3020] text-[15px] h-max py-[5px] text-[#F5F0E6] flex items-center justify-center gap-[20px]">VIEW MENU <CgArrowLongRight /></button>
-        <button className = "w-[10vw] w-max px-[20px] text-[#1F3020] border border-[#1F3020] text-[15px] h-max py-[4px] flex items-center justify-center gap-[20px]">MAKE RESERVATION <CgArrowLongRight /></button>
+    <div className='flex flex-row items-center mt-[50px] mx-10 gap-[30px]'>
+        <button className = "w-[10vw] w-max px-[20px] bg-[#1F3020] text-[8px] md:text-[15px] h-max py-[10px] text-[#F5F0E6] flex items-center justify-center gap-[20px]">VIEW MENU <CgArrowLongRight /></button>
+        <button className = "w-[10vw] w-max px-[20px] text-[#1F3020] border border-[#1F3020] text-[8px] md:text-[15px] h-max py-[9px] flex items-center justify-center gap-[20px]">MAKE RESERVATION <CgArrowLongRight /></button>
     </div>
     <div className="mt-20 w-full overflow-hidden">
         <img
