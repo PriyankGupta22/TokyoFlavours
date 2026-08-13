@@ -1,5 +1,6 @@
 import React from 'react'
 import { CgArrowLongRight } from "react-icons/cg";
+import { Link } from 'react-router-dom'
 import restaurantImage from "../assets/restaurantImage.png"
 
 const Hero = () => {
@@ -26,9 +27,9 @@ const Hero = () => {
         About
       </a>
 
-      <a href="/menu" className="font-inter text-[clamp(10px,17px,25px)">
+      <Link to="/menu" className="font-inter text-[clamp(10px,17px,25px)">
         Menu
-      </a>
+      </Link>
 
       <a href="/gallery" className="font-inter text-[clamp(10px,17px,25px)">
         Gallery
@@ -59,7 +60,7 @@ const Hero = () => {
         <div className = "text-[10px] flex flex-wrap w-[70vw] lg:text-[24px]">FROM RICH, SLOW-SIMMERED RAMEN TO DELICATE JAPANESE FAVORITES, EVERY DISH IS CRAFTED WITH BOLD FLAVORS, FRESH INGREDIENTS, AND A TOUCH OF TOKYO.</div>
     </div>
     <div className='flex flex-row items-center mt-[50px] mx-10 gap-[30px]'>
-        <button className = "w-[10vw] w-max px-[20px] bg-[#1F3020] text-[8px] md:text-[15px] h-max py-[10px] text-[#F5F0E6] flex items-center justify-center gap-[20px]">VIEW MENU <CgArrowLongRight /></button>
+        <Link to="/menu" className = "w-[10vw] w-max px-[20px] bg-[#1F3020] text-[8px] md:text-[15px] h-max py-[10px] text-[#F5F0E6] flex items-center justify-center gap-[20px]">VIEW MENU <CgArrowLongRight /></Link>
         <button className = "w-[10vw] w-max px-[20px] text-[#1F3020] border border-[#1F3020] text-[8px] md:text-[15px] h-max py-[9px] flex items-center justify-center gap-[20px]">MAKE RESERVATION <CgArrowLongRight /></button>
     </div>
     <div className="mt-20 w-full overflow-hidden">

@@ -1,7 +1,3 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
 import './App.css'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -10,19 +6,29 @@ import Gallery from './components/Gallery'
 import Testimonials from './components/Testimonials'
 import Reservation from './components/Reservation'
 import Contacts from './components/Contacts'
+import MenuSection from './components/MenuSection'
+import { Route, Routes } from 'react-router-dom'
 
 function App() {
 
   return (
-    <div>
-      <Hero />
-      <About />
-      <Menu />
-      <Gallery />
-      <Testimonials />
-      <Reservation />
-      <Contacts />
-    </div>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <div>
+            <Hero />
+            <About />
+            <Menu />
+            <Gallery />
+            <Testimonials />
+            <Reservation />
+            <Contacts />
+          </div>
+        }
+      />
+      <Route path="/menu" element={<MenuSection />} />
+    </Routes>
   )
 }
 
