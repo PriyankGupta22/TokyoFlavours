@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { LuSoup, LuCupSoda } from "react-icons/lu";
 
 import pic1 from "../assets/pic1.png";
@@ -85,7 +85,7 @@ const menuCategories = [
     title: "DRINKS",
     japanese: "飲み物",
     image: pic9,
-    imageHeight: "h-[420px]",
+    imageHeight: "h-[370px]",
     tagline: true,
     items: [
       {
@@ -125,149 +125,163 @@ const categories = [
   },
 ];
 
-const MenuSidebar = ({ activeCategory }) => {
+const MenuSidebar = ({ activeCategory, onCategoryClick }) => {
   return (
-    <>
-      <aside className="hidden md:flex flex-col gap-10">
-        {categories.map(({ id, label, icon: Icon }) => {
-          const active = activeCategory === id;
+    <aside className="flex flex-col gap-10">
+      {categories.map(({ id, label, icon: Icon }) => {
+        const active = activeCategory === id;
 
-          return (
-            <button
-              key={id}
-              className={`flex w-fit items-center gap-4 transition ${
-                active
-                  ? "rounded-full bg-[#0c281d] px-6 py-4 text-white"
-                  : "px-3 py-2 text-[#24352d]"
-              }`}
-            >
-              <Icon size={22} />
+        return (
+          <button
+            key={id}
+            onClick={() => onCategoryClick(id)}
+            className={`flex w-fit items-center gap-4 transition-all duration-300 ${
+              active
+                ? "rounded-full bg-[#0c281d] px-6 py-4 text-white"
+                : "px-3 py-2 text-[#24352d] hover:text-[#0c281d]"
+            }`}
+          >
+            <Icon size={22} />
 
-              <span className="uppercase tracking-[0.18em]">
-                {label}
-              </span>
-            </button>
-          );
-        })}
-      </aside>
-
-      <div className="overflow-x-auto md:hidden">
-        <div className="flex min-w-max gap-3">
-          {categories.map(({ id, label }) => {
-            const active = activeCategory === id;
-
-            return (
-              <button
-                key={id}
-                className={`whitespace-nowrap rounded-full px-5 py-3 ${
-                  active
-                    ? "bg-[#0c281d] text-white"
-                    : "text-[#24352d]"
-                }`}
-              >
-                {label}
-              </button>
-            );
-          })}
-        </div>
-      </div>
-    </>
+            <span className="uppercase tracking-[0.18em]">
+              {label}
+            </span>
+          </button>
+        );
+      })}
+    </aside>
   );
 };
 
-const MenuCategory = ({ category, showSidebar }) => {
+const MenuCategory = ({ category }) => {
   return (
     <section
       id={category.id}
-      className="w-full bg-[#f5f0e6] px-[5vw] py-[clamp(60px,8vw,120px)] mt-[-100px]"
+      className="w-full scroll-mt-0 bg-[#f5f0e6] py-[clamp(60px,8vw,120px)] first:pt-0"
     >
-      <div className="mx-auto max-w-[1600px]">
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[220px_1px_1fr] lg:gap-14">
+      <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_300px] xl:grid-cols-[minmax(0,1fr)_360px] xl:gap-20">
 
-          <div>
-            {showSidebar && (
-              <MenuSidebar activeCategory={category.id} />
-            )}
+        <div className="min-w-0">
+          <div className="mb-10 flex items-center gap-4 sm:gap-5">
+            <h2 className="shrink-0 font-serif text-[clamp(2rem,3vw,3.5rem)] tracking-[0.08em] text-[#0c281d]">
+              {category.title}
+            </h2>
+
+            <div className="h-px flex-1 bg-[#d7d0c3]" />
+
+            <span className="shrink-0 text-[clamp(0.85rem,1.2vw,1.2rem)] tracking-[0.2em] text-[#b33a2d]">
+              {category.japanese}
+            </span>
+
+            <div className="hidden h-px w-[clamp(40px,8vw,120px)] bg-[#d7d0c3] sm:block" />
           </div>
 
-          <div className="hidden bg-[#d7d0c3] lg:block" />
+          <div className="space-y-[clamp(32px,4vw,55px)]">
+            {category.items.map((item) => (
+              <div key={item.name}>
+                <div className="flex items-start justify-between gap-8">
+                  <h3 className="max-w-[80%] font-serif text-[clamp(1.5rem,2vw,2.35rem)] leading-[1.05] text-[#0c281d]">
+                    {item.name}
 
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_300px] xl:grid-cols-[minmax(0,1fr)_360px] xl:gap-20">
-
-            <div className="min-w-0">
-              <div className="mb-10 flex items-center gap-4 sm:gap-5">
-                <h2 className="shrink-0 font-serif text-[clamp(2rem,3vw,3.5rem)] tracking-[0.08em] text-[#0c281d]">
-                  {category.title}
-                </h2>
-
-                <div className="h-px flex-1 bg-[#d7d0c3]" />
-
-                <span className="shrink-0 text-[clamp(0.85rem,1.2vw,1.2rem)] tracking-[0.2em] text-[#b33a2d]">
-                  {category.japanese}
-                </span>
-
-                <div className="hidden h-px w-[clamp(40px,8vw,120px)] bg-[#d7d0c3] sm:block" />
-              </div>
-
-              <div className="space-y-[clamp(32px,4vw,55px)]">
-                {category.items.map((item) => (
-                  <div key={item.name}>
-                    <div className="flex items-start justify-between gap-8">
-                      <h3 className="max-w-[80%] font-serif text-[clamp(1.5rem,2vw,2.35rem)] leading-[1.05] text-[#0c281d]">
-                        {item.name}
-
-                        {item.spicy && (
-                          <span className="ml-2 text-[clamp(0.9rem,1vw,1.2rem)]">
-                            🌶
-                          </span>
-                        )}
-                      </h3>
-
-                      <span className="shrink-0 whitespace-nowrap text-[clamp(1.1rem,1.3vw,1.7rem)] font-medium text-[#0c281d]">
-                        {item.price}
+                    {item.spicy && (
+                      <span className="ml-2 text-[clamp(0.9rem,1vw,1.2rem)]">
+                        🌶
                       </span>
-                    </div>
+                    )}
+                  </h3>
 
-                    <p className="mt-3 max-w-[760px] text-[clamp(0.9rem,1vw,1.15rem)] leading-[1.55] text-[#4b534f]">
-                      {item.desc}
-                    </p>
-                  </div>
-                ))}
+                  <span className="shrink-0 whitespace-nowrap text-[clamp(1.1rem,1.3vw,1.7rem)] font-medium text-[#0c281d]">
+                    {item.price}
+                  </span>
+                </div>
+
+                <p className="mt-3 max-w-[760px] text-[clamp(0.9rem,1vw,1.15rem)] leading-[1.55] text-[#4b534f]">
+                  {item.desc}
+                </p>
               </div>
-            </div>
-
-            <div className="hidden lg:block">
-              <div
-                className={`${category.imageHeight} w-full overflow-hidden bg-[#d8d0bf]`}
-              >
-                <img
-                  src={category.image}
-                  alt={category.title}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-            </div>
-
+            ))}
           </div>
         </div>
 
-        {category.tagline && (
-          <div className="mt-10 hidden border-t border-[#d7d0c3] pt-8 lg:block">
-            <p className="text-sm uppercase tracking-[0.18em] text-[#26362e]">
-              Real ingredients.
-              <br />
-              Bold flavours.
-              <br />
-              True to Japan.
-            </p>
+        <div className="hidden lg:block">
+          <div
+            className={`${category.imageHeight} w-full overflow-hidden bg-[#d8d0bf]`}
+          >
+            <img
+              src={category.image}
+              alt={category.title}
+              className="h-full w-full object-cover"
+            />
           </div>
-        )}
+        </div>
       </div>
+
+      {category.tagline && (
+        <div className="mt-10 border-t border-[#d7d0c3] pt-8">
+          <p className="text-sm uppercase tracking-[0.18em] text-[#26362e]">
+            Real ingredients.
+            <br />
+            Bold flavours.
+            <br />
+            True to Japan.
+          </p>
+        </div>
+      )}
     </section>
   );
 };
 
 const MenuSection = () => {
+  const [activeCategory, setActiveCategory] = useState("ramen");
+  const menuScrollRef = useRef(null);
+
+  const handleCategoryClick = (id) => {
+    const container = menuScrollRef.current;
+    const target = container?.querySelector(`#${id}`);
+
+    if (!container || !target) return;
+
+    setActiveCategory(id);
+
+    container.scrollTo({
+      top: target.offsetTop,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    const container = menuScrollRef.current;
+
+    if (!container) return;
+
+    const sections = menuCategories
+      .map((category) => container.querySelector(`#${category.id}`))
+      .filter(Boolean);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort(
+            (a, b) =>
+              b.intersectionRatio - a.intersectionRatio
+          );
+
+        if (visible.length) {
+          setActiveCategory(visible[0].target.id);
+        }
+      },
+      {
+        root: container,
+        threshold: [0.2, 0.5, 0.8],
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
       <section className="relative min-h-[60svh] w-full overflow-hidden bg-[#f5f0e6] text-[#0c281d]">
@@ -310,17 +324,47 @@ const MenuSection = () => {
               和
             </div>
           </div>
-
         </div>
       </section>
 
-      {menuCategories.map((category, index) => (
-        <MenuCategory
-          key={category.id}
-          category={category}
-          showSidebar={index === 0}
-        />
-      ))}
+      <section className="w-full bg-[#f5f0e6] px-[5vw]">
+        <div className="mx-auto max-w-[1600px]">
+
+          <div className="mb-8 md:hidden">
+            <MenuSidebar
+              activeCategory={activeCategory}
+              onCategoryClick={handleCategoryClick}
+            />
+          </div>
+
+          <div className="grid h-[calc(100svh-80px)] grid-cols-1 md:grid-cols-[220px_1px_minmax(0,1fr)] md:gap-14">
+
+            <div className="hidden md:block">
+              <div className="sticky top-24">
+                <MenuSidebar
+                  activeCategory={activeCategory}
+                  onCategoryClick={handleCategoryClick}
+                />
+              </div>
+            </div>
+
+            <div className="hidden bg-[#d7d0c3] md:block" />
+
+            <div
+              ref={menuScrollRef}
+              className="min-h-0 overflow-y-auto overscroll-contain pr-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            >
+              {menuCategories.map((category) => (
+                <MenuCategory
+                  key={category.id}
+                  category={category}
+                />
+              ))}
+            </div>
+
+          </div>
+        </div>
+      </section>
     </>
   );
 };
